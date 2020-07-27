@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Car Predict</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div  id="main"  class="animate__animated animate__slideInDown">
+	  &nbsp;Help us to Predict Price Better	
+	</div>
+
+<div class="main_input">
+<form action="/">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> Model Year &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="number" id="year" name="year"  placeholder="Eg. :  2010" required>
+
+
+<br></br>
+ <b> &nbsp;Kilometers Completed &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="number" id="km" name="km" placeholder="Eg. : 250-250000" required>&nbsp; km</b>
+
+<br></br>
+  <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Type of Fuel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <select id="fuel"  name="fuel" required>
+  <option value=""> - - </option>
+  <option value="0">CNG</option>
+  <option value="1">LPG</option>
+  <option value="2">Petrol</option>
+  <option value="3">Diesel</option>
+ </select>
+
+
+<br></br>
+  <b>&nbsp;&nbsp;Type of Transmission &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="trans" id="owner type" required>
+  <option value=""> - - </option>
+  <option value="manual">Manual</option>
+  <option value="auto">Automatic</option>
+ </select>
+
+<br></br>
+  <b>Number Of Times Sold&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <select name="times_sold" id="owner type" required>
+  <option value=""> - - </option>
+  <option value="0">1 Time</option>
+  <option value="1">2 Times</option>
+  <option value="2">3 Times</option>
+  <option value="3">4 Times</option>
+ </select>
+<br></br>
+
+ <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mileage&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="number" id="mileage" name="mileage" placeholder="Eg. :  07-30 " required/>&nbsp;&nbsp;<b>kmpl</b>
+<br>
+<br>
+  <input type="submit" value="Calculate Price" class="button">
+</form> 
+</div>
+</body>
+<style type="text/css">
+  .animate__animated.animate__slideInDown{
+  	animation-delay: 1s;
+ --animate-duration: 2s;
+  }
+
+	body{
+		background-image: url('car.jpg');
+		background-position:50% 20%;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	    animation: breath 25s linear infinite;
+
+	}
+
+	@keyframes breath {
+  0%   { background-size: 130% auto; }
+  50% { background-size: 110% auto; }
+  100% { background-size: 130% auto; }
+}
+b{
+	color: white;
+}
+.button{
+	border: 2px solid white;
+	width: 300px;
+	height:40px;
+	border-radius: 10px;
+	font-size: 25px;
+margin-top: 10px;
+}
+.button:hover{
+	background-color:rgba(255,255,255,0.1);
+	color: black;
+	box-shadow: 1px 1px 1px 1px white;
+
+}
+#main{
+	background: rgba(0,0,0,0.7);
+		border-radius: 30px;
+		position: absolute;
+		left: 25%;
+		width: 700px;
+		height: 80px;
+		color: white;
+		margin-top: 30px;
+		align-content: center;
+		font-size: 50px;
+		padding-top: 20px;
+		padding-left: 40px;
+	    
+}
+.main_input{
+		background: rgba(0,0,0,0.7);
+		border-radius: 30px;
+		position: absolute;
+		left: 25%;
+		width: 700px;
+		height: 430px;
+		margin-top: 150px;
+		padding: 20px;
+		font-size: 25px;
+}
+.main_input:hover{
+	  box-shadow: 1px 1px 1px 1px white;
+}
+select{
+		font-size: 20px;
+		width: 206px;
+		height: 30px;
+		border: none;
+  		outline:none;
+  		background: none;
+  		border-bottom: 3px solid white;
+  		color:white;
+  		border-radius: 20px;
+  		background-color: rgba(0,0,0,0.7);
+}
+
+input{ 
+	font-size: 20px;
+		width: 200px;
+		height: 25px;
+		outline:none;
+		background:none;
+		border: none;
+  		outline:none;
+        border-bottom: 3px solid white;
+        color: white;
+       border-radius: 10px;
+        background-color: rgba(0,0,0,0.7);
+}
+</style>
+</html>
