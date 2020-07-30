@@ -24,8 +24,6 @@ car_data.loc[car_data['fuel_Type'] == 'LPG', 'new_fuel'] = 1                    
 car_data.loc[car_data['fuel_Type'] == 'Petrol', 'new_fuel'] = 2                                 # 2 for Petrol
 car_data.loc[car_data['fuel_Type'] == 'Diesel', 'new_fuel'] = 3                                 # 3 for Diesel
    
-
-
 car_data.dropna(inplace = True) #empty Data removing
 
 
@@ -140,29 +138,29 @@ from sklearn.metrics import r2_score
 
 
 
-print("Hello Vaibhav Nai toh Pragya :)")
-switch_number=int(input("Want To know the Price of BIKE or CAR? (Press 1 for CAR And 2 for BIKE Then press Enter)  :  "))
-if switch_number==1:
-     year=int(input('Enter the Model Year of your Vehicle You Want? Ex:- 2010 : '))
-     km=int(input('How much Kilometer Runed Vehicle You Want? Ex:- 28000KM : '))
-     fuel=int(input('Which Type of Fuel? (press 0 for CNG,1 for LPG.2 for Petrol,3 for Diesel) : '))
-     trans=int(input('Manual Or Automatic ? (Press 0 for Manual and 1 for Automatic) : '))
-     owner=int(input('How Many time sold vehicle you want?(press 0 for second hand,1 for third hand,2 for fourth hand) : '))
-     mileage=int(input('How much mileage you want? Ex :- 20 : '))
-     user_car_prediction=linearRegression.predict([[year,km,fuel,trans,owner,mileage]])
-     res = str(user_car_prediction)[2:-2]
-     print("We Recommend You to keep your Budget this much for your car =>",res)
-     print('We Are ',r2_score(Y_test1,y_pred)*100,'% Sure About our Predictions  :)') 
-     time.sleep(10)
+#print("Hello Vaibhav Nai toh Pragya :)")
+#switch_number=int(input("Want To know the Price of BIKE or CAR? (Press 1 for CAR And 2 for BIKE Then press Enter)  :  "))
+#if switch_number==1:
+ #    year=int(input('Enter the Model Year of your Vehicle You Want? Ex:- 2010 : '))
+  #   km=int(input('How much Kilometer Runed Vehicle You Want? Ex:- 28000KM : '))
+ #    fuel=int(input('Which Type of Fuel? (press 0 for CNG,1 for LPG.2 for Petrol,3 for Diesel) : '))
+ #    trans=int(input('Manual Or Automatic ? (Press 0 for Manual and 1 for Automatic) : '))
+ #    owner=int(input('How Many time sold vehicle you want?(press 0 for second hand,1 for third hand,2 for fourth hand) : '))
+ #   mileage=int(input('How much mileage you want? Ex :- 20 : '))
+ #   user_car_prediction=linearRegression.predict([[year,km,fuel,trans,owner,mileage]])
+ #   res = str(user_car_prediction)[2:-2]
+ #    print("We Recommend You to keep your Budget this much for your car =>",res)
+ #    print('We Are ',r2_score(Y_test1,y_pred)*100,'% Sure About our Predictions  :)') 
+ #    time.sleep(10)
      
-elif switch_number==2:
-     year=int(input('Enter the Model Year of your Vehicle You Want? Ex:- 2010 : '))
-     km=int(input('How much Kilometer Runed Vehicle You Want? Ex:- 28000KM : '))
-     owner=int(input('How Many time sold vehicle you want?(press 0 for second hand,1 for third hand,2 for fourth hand) : '))
-     user_bike_predicted=linearRegre.predict([[year,owner,km]])
-     res = str(user_bike_predicted)[2:-2]
-     print("We Recommend You to keep your Budget this much for Your Bike =>",res)
-     print("We Are ",r2_score(Y_test2,y)*100,"% Sure About our Predictions  :)")
-     time.sleep(10)
-else:
-     print("Aree Yaarr sirf 1 ya 2 dabane Bola tha, tum bhi na  :( ")
+#elif switch_number==2:
+year=int(input('Enter the Model Year of your Vehicle You Want? Ex:- 2010 : '))
+km=int(input('How much Kilometer Runed Vehicle You Want? Ex:- 28000KM : '))
+owner=int(input('How Many time sold vehicle you want?(press 0 for second hand,1 for third hand,2 for fourth hand) : '))
+user_bike_predicted=linearRegre.predict([[year,owner,km]])
+res = str(user_bike_predicted)[2:-2]
+print("We Recommend You to keep your Budget this much for Your Bike =>",res)
+#     print("We Are ",r2_score(Y_test2,y)*100,"% Sure About our Predictions  :)")
+#     time.sleep(10)
+#else:
+ #    print("Aree Yaarr sirf 1 ya 2 dabane Bola tha, tum bhi na  :( ")

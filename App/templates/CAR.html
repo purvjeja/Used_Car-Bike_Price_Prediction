@@ -10,7 +10,7 @@
 	</div>
 
 <div class="main_input">
-<form action="/">
+<form action="{{ url_for('car')}}" method="POST">
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> Model Year &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <input type="number" id="year" name="year"  placeholder="Eg. :  2010" required>
 
@@ -34,8 +34,8 @@
   <b>&nbsp;&nbsp;Type of Transmission &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <select name="trans" id="owner type" required>
   <option value=""> - - </option>
-  <option value="manual">Manual</option>
-  <option value="auto">Automatic</option>
+  <option value="0">Manual</option>
+  <option value="1">Automatic</option>
  </select>
 
 <br></br>
@@ -65,7 +65,7 @@
   }
 
 	body{
-		background-image: url('car.jpg');
+		background-image: url('static/car.jpg');
 		background-position:50% 20%;
 		background-repeat: no-repeat;
 		background-size: 100% 100%;

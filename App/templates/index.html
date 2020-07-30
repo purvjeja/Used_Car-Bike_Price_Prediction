@@ -16,11 +16,11 @@
 <hr class="first-hr animate__shakeY">
 <div class="buttons ">
 	<div class="car_button">
-		<button onclick="onclick=window.location.href='Car/CAR.html'" class="animate__animated animate__bounceIn"><b>CAR</b></button>
+		<button onclick="window.location.href='{{ url_for('CAR') }}'" class="animate__animated animate__bounceIn"><b>CAR</b></button>
 	</div>
 	<hr class="animate__bounceInRight">
 	<div class="bike_button">
-		<button onclick="onclick=window.location.href='Bike/BIKE.html'"  class="animate__animated animate__bounceIn"><b>BIKE</b></button>
+		<button onclick="window.location.href='{{ url_for('BIKE') }}'"  class="animate__animated animate__bounceIn"><b>BIKE</b></button>
 	</div>
 </div>
 </body>
@@ -39,7 +39,7 @@
 		margin-left: 0%;
 		padding-top:0px;
 		color: white;
-		background-image: url('home.jpg');
+		background-image: url('static/home.jpg');
 		background-position:40% 9%;
 		height: 100%;
 		background-size:cover;

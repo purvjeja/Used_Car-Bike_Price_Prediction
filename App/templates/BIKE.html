@@ -9,9 +9,9 @@
    Help us to Predict Price Better 
   </div>
 <div class="main_input">
-<form action="/">
+<form action="{{ url_for('bike')}}" method="POST">
 <b>  Model Year &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </b> &nbsp;&nbsp;&nbsp;
-  <input type="number" id="year" name="year" placeholder="Eg. :  2010">
+  <input type="number" name="y" placeholder="Eg. :  2010">
 
 <BR><br>
 
@@ -37,7 +37,7 @@
 </body>
 <style type="text/css">
   body{
-    background-image: url('bike1.jpg');
+    background-image: url('static/bike1.jpg');
     background-size: 100% 100%;
     background-position:50% 10%;
     background-repeat: no-repeat;
