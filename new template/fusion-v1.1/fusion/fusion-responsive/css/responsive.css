@@ -1,0 +1,244 @@
+@media (max-width: 1400px) and (min-width: 991px) {
+  /**
+	 * ========================================
+	 * Portfolio Section Single Image Style
+	 * ========================================
+	 */
+  .image img {
+    width: 700px;
+  }
+  /**
+	 * ========================================
+	 * Slider Area Style
+	 * ========================================
+	 */
+  .slider {
+    padding: 0 100px;
+  }
+  /**
+	 * ========================================
+	 * Portfolio Project Detail Content Style
+	 * ========================================
+	 */
+  .link-list {
+    right: 78px;
+  }
+}
+@media (max-width: 991px) {
+  /**
+	 * =======================
+	 * Top Navigation
+	 * =======================
+	 */
+  .main-navbar-top .navbar-header {
+    float: left;
+  }
+  .main-navbar-top .navbar-collapse-right {
+    float: right;
+  }
+  /**
+	 * ========================================
+	 * Portfolio Section Single Image Style
+	 * ========================================
+	 */
+  .image img {
+    width: 100%;
+  }
+  /**
+	 * ========================================
+	 * Portfolio Project Detail Content Style
+	 * ========================================
+	 */
+  .project-detail .project-detail-image-outer {
+    text-align: center;
+  }
+  .link-list .link .inner {
+    text-align: right;
+  }
+  .link-list .line {
+    left: 0px;
+    float: right;
+  }
+  .vertical-middle {
+    display: block;
+    vertical-align: middle;
+    float: none;
+  }
+}
+@media (max-width: 767px) {
+  .section-heading {
+    font-size: 35px;
+    line-height: 45px;
+  }
+  .section-heading-outer.p-l-50,
+  .section-heading-outer.p-r-50 {
+    padding: 0px;
+  }
+  /**
+	 * =======================
+	 * Top Navigation
+	 * =======================
+	 */
+  .main-navbar-top .nav-trigger {
+    left: auto;
+    right: 15px;
+    -o-transform: translate3d(0, 0px, 0);
+    -ms-transform: translate3d(0, 0px, 0);
+    -moz-transform: translate3d(0, 0px, 0);
+    -webkit-transform: translate3d(0, 0px, 0);
+    transform: translate3d(0, 0px, 0);
+  }
+  .main-navbar-top .navbar-header {
+    float: left;
+  }
+  .main-navbar-top .navbar-collapse {
+    width: 100%;
+    left: calc(50% + 15px);
+  }
+  .main-navbar-top .navbar-collapse .navbar-nav {
+    padding: 0 25px 10px 25px;
+  }
+  .main-navbar-top .navbar-collapse .navbar-nav li {
+    float: left;
+  }
+  .main-navbar-top .navbar-collapse .navbar-nav li .btn-nav {
+    line-height: 30px;
+  }
+  /**
+	 * ========================================
+	 * Home Section Style
+	 * ========================================
+	 */
+  .home-section .heading-outer .p-t-40,
+  .home-section .heading-outer .p-l-40,
+  .home-section .heading-outer .p-r-40,
+  .home-section .heading-outer .p-b-40 {
+    padding: 15px;
+  }
+  /**
+	 * ========================================
+	 * Services Section Style
+	 * ========================================
+	 */
+  .services-section .each-services .each-services-inner {
+    max-width: 410px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+  }
+  .services-section .each-services:last-child .each-features-inner {
+    margin-bottom: 0px;
+  }
+  /**
+	 * ========================================
+	 * Services Detail View Style
+	 * ========================================
+	 */
+  .services-full-view .services-details .back-button-outer {
+    position: relative;
+    bottom: 0px;
+    left: 0;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .services-full-view .services-details .line-outer {
+    position: relative;
+    left: 50%;
+  }
+  .services-full-view .services-details .line {
+    margin-bottom: 6px;
+  }
+  /**
+	 * ========================================
+	 * Portfolio Project Detail Content Style
+	 * ========================================
+	 */
+  .project-detail .project-detail-inner {
+    display: block;
+    -webkit-flex: initial;
+    /* Safari 6.1+ */
+    -ms-flex: initial;
+    /* IE 10 */
+    flex: initial;
+    text-align: left;
+  }
+  .project-detail .project-detail-content {
+    padding: 15px 15px 30px 15px;
+  }
+  .project-detail .list {
+    text-align: center;
+  }
+  .project-detail .list li {
+    padding-right: 7px;
+    margin-right: 7px;
+    display: inline;
+  }
+  .heading-text {
+    position: relative;
+    width: 100%;
+  }
+  .heading-text .text {
+    font-size: 45px;
+    line-height: 60px;
+    font-weight: 400;
+  }
+  .heading-text .line {
+    left: 50%;
+  }
+  .link-list {
+    position: relative;
+    width: 100%;
+    right: 0;
+    margin-top: 10px;
+  }
+  .link-list .link .inner {
+    text-align: center;
+  }
+  /**
+	 * ========================================
+	 * Slider Area Style
+	 * ========================================
+	 */
+  .slider .owl-pagination {
+    float: none;
+  }
+  .slider .btn-outer {
+    float: none;
+  }
+  /**
+	 * ========================================
+	 * Testimonials Section Style
+	 * ========================================
+	 */
+  .testimonial-section .testimonial-wrapper .item {
+    padding: 0 20px;
+  }
+  /**
+	 * ========================================
+	 * Team Section Style
+	 * ========================================
+	 */
+  .team-member .each-item .item-inner {
+    max-width: 410px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .team-member:last-child .item-inner {
+    margin-bottom: 0px;
+  }
+  /**
+	 * ========================================
+	 * Contact Section Style
+	 * ========================================
+	 */
+  .contact-footer .each-section .each-section-inner {
+    max-width: 410px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+  .contact-footer .each-section:last-child .each-section-inner {
+    margin-bottom: 0px;
+  }
+}
