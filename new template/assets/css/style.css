@@ -442,6 +442,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(255, 255, 255, 0.3);
   height: 100%;
   text-align: center;
+  box-shadow: 7px 7px 5px black;
 }
 
 #hero .icon-box i {
@@ -466,6 +467,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero .icon-box h3 a:hover {
   color: #ffc451;
+  text-shadow: 4px 4px 6px black;
 }
 
 #hero .icon-box:hover {
