@@ -1,21 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>CAR RESULT</title>
+  <title>Result</title>
+  <link rel="icon" href="static/car-logo.png" />
 </head>
 <body>
- <h1>{{ text }}</h1>
- Abhi Aur Edit Karna Bakki hain Guys!
+<button class="back-button" onclick="window.history.back();"><</button>
+<div class="main">
+<h1>Your Budget Should Be {{ text }} ₹</h1>
+<h2>We Are {{ predicted_score }} % Sure About Price Prediction :)</h2>
+
+<h2 style="color:green">{{ car_suggestion }}</h2>
+</div>
 </body>
 <style type="text/css">
-	body{
-		background-color: black;
-		color:yellow;
-		font-size: 50px;
-	}
-	h1{
-		font-size: 50px;
-		color:white;
-	}
+   body{
+    background-image: url('static/car.jpg');
+    background-size: 100% 100%;
+    background-position:50% 10%;
+    background-repeat: no-repeat;
+    animation: breath 30s linear infinite;
+    color:white;
+  }
+  @keyframes breath {
+  0%   { background-size: 150% auto; }
+  45% { background-size: 110% auto; }
+  55% { background-size: 110% auto; }
+  100% { background-size: 150% auto; }
+}
+img{
+  margin-left: 380px;
+  border-radius: 20px;
+  width: 120px;
+  height: 100px;
+}
+.back-button{
+  width: 60px;
+  height: 60px;
+  border-radius: 60%;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 30px;
+}
+.back-button:hover{
+  background-color:rgba(255,255,255,0.7);
+  color: black;
+  box-shadow: 1px 1px 1px 1px white;
+}
+.main{
+    background: rgba(0,0,0,0.8);
+    border-radius: 30px;
+    position: absolute;
+    left: 140px;
+    width: 1200px;
+    height: 400px;
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 25px;
+}
+.main:hover{
+    box-shadow: 5px 5px 5px 5px red;
+}
 </style>
 </html>

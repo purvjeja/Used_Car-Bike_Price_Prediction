@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
-from sklearn import metrics
+from sklearn.metrics import r2_score
 app = Flask(__name__)
 
 @app.route('/',methods=['GET','POST'])
@@ -52,7 +52,6 @@ def car():
     #print(y_prediction)
     #print(regressor.score(X_test,Y_test))
 
-
     def predict_mileage(input_data):
         y_prediction=regressor.predict(input_data)
         if(y_prediction < 10): y_prediction=y_prediction+13.43 
@@ -99,15 +98,17 @@ def car():
         else:
             return mileage
 
-
     Full_Car_Data['mileage']=Full_Car_Data[['mileage','year','kilometers_Driven','new_transmission','new_fuel']].apply(mileageempty,axis=1)
-    #print(Full_Car_Data.count())
     
-    X_train1, X_test1, Y_train1, Y_test1=train_test_split(Full_Car_Data[['year','kilometers_Driven','new_fuel','new_transmission','new_owner','mileage']],Full_Car_Data[['selling_price']],test_size=0.01,random_state=3)
+    X_train1, X_test1, Y_train1, Y_test1=train_test_split(Full_Car_Data[['year','kilometers_Driven','new_fuel','new_transmission','new_owner','mileage']],Full_Car_Data[['selling_price']],test_size=0.2,random_state=3)
     linearRegression = LinearRegression()
     linearRegression.fit(X_train1,Y_train1)
     car_predicted=linearRegression.predict(X_test1)
-    #users_prediction=linearRegression.predict(X_test1)
+    from sklearn.ensemble import RandomForestRegressor
+    rf = RandomForestRegressor(n_estimators = 100)
+    rf.fit(X_train1, Y_train1.values.ravel())
+    y_pred = rf.predict(X_test1)
+    score=r2_score(Y_test1,y_pred)
     year = int(request.form["year"])
     km = int(request.form["km"])
     fuel = int(request.form["fuel"])
@@ -117,12 +118,38 @@ def car():
     user_car_prediction=linearRegression.predict([[year,km,fuel,trans,owner,mileage]])
     res = float(str(user_car_prediction)[2:-2])
     output=round(res,2)
+    score=round(score,2)
+    score=score*100
+    
     if output<1:
-             return render_template('result_car.html',text="OPPS :(  , Seems Like Your Inputed Data is Incorrect")
+            return render_template('result_car_negative.html')
     else:
-             return render_template('result_car.html',text="You Can Get Vehicle At {}".format(output))
+            global car
+            global count
+            count=0
+            car="Oops! We Are Unable To Suggest You Best Car For Your Input :("
+            def findcarname(columns):
+                    global car
+                    global count
+                    name=columns[0]
+                    year_used=columns[1]
+                    price=columns[2]
+                    transmission=columns[3]
+                    price1=price+100000
+                    price2=price-100000
+                    if year_used==year:
+                        if transmission==trans:
+                            if (output <= price1 and output >= price2):
+                              car=name
+                              count+=1
+            Full_Car_Data[['name','year','selling_price','new_transmission']].apply(findcarname,axis=1)
+
+            if count==0:
+                    return render_template('result_car.html',text="{}".format(output),predicted_score="{}".format(score),car_suggestion="{}".format(car))
+            else:
+                    return render_template('result_car.html',text="{}".format(output),predicted_score="{}".format(score),car_suggestion="\"{}\" Model Fits Best To Your Inputed Data :)".format(car))
  else:
-    return render_template('result_car.html')
+    return render_template('CAR.html')
         
 
 @app.route('/BIKE_Result', methods=['GET','POST'])
@@ -139,7 +166,7 @@ def bike():
     linearRegre= LinearRegression()
     linearRegre.fit(X_train2,Y_train2)
     #bike_predicted=linearRegre.predict(X_test2)
-
+    bike_names=bike_data['name']
     year = int(request.form["y"])
     owner = int(request.form["sold"])
     km = int(request.form["km"])
@@ -148,17 +175,41 @@ def bike():
     user_bike_predicted=linearRegre.predict([[year,km,owner]])
     res = float(str(user_bike_predicted)[2:-2])
     output=round(res,2)
-    # from sklearn.ensemble import RandomForestRegressor
-    #rf = RandomForestRegressor(n_estimators = 100)
-    # rf.fit(X_train2, Y_train2.values.
-    #res=int(res)
+    output=round(output)
+    from sklearn.ensemble import RandomForestRegressor
+    rf = RandomForestRegressor(n_estimators = 100)
+    rf.fit(X_train2, Y_train2.values.ravel())
+    y_pred2 = rf.predict(X_test2)
+    score=r2_score(Y_test2,y_pred2)
+    score=round(score,2)
+    score=score*100
     if output<1:
-        return render_template('result_bike.html',text="OPPS :(  , Seems Like Your Inputed Data is Incorrect")
+        return render_template('result_bike_negative.html')
     else:
-        return render_template('result_bike.html',text="You Can Get Vehicle At {}".format(output))
+        global bike
+        bike="Oops! We Are Unable To Suggest You Best Bike For Your Input :("
+        global count
+        count=0
+        def findbikename(columns):
+            global bike
+            global count
+            name=columns[0]
+            this_year=columns[1]
+            price=columns[2]
+            price1=price+10000
+            price2=price-10000
+            if this_year==year:
+                    if (output <= price1 and output >= price2):
+                             bike=name
+                             count+=1
+        bike_data[['name','year','selling_price']].apply(findbikename,axis=1)
 
+        if count==0:
+            return render_template('result_bike.html',text="{}".format(output),predicted_score="{}%".format(score),bike_suggestion="{}".format(bike))
+        else:
+            return render_template('result_bike.html',text="{}".format(output),predicted_score="{}%".format(score),bike_count_suggestion="Total Number Of Bikes Which Relates Your Inputed Data Is  {} , ".format(count),bike_suggestion="Out Of Which \"{}\" Is Best For You :)".format(bike))
  else:
-    return render_template('result_bike.html')
+    return render_template('BIKE.html')
 
 if __name__=="__main__":
     app.run(debug=True)

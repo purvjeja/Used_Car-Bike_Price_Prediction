@@ -2,12 +2,14 @@
 <html>
 <head>
 	<title>Car Predict</title>
+	<link rel="icon" href="static/car-logo.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div  id="main"  class="animate__animated animate__slideInDown">
+ <button class="back-button" onclick="window.history.back();"><</button>
+<div  id="main"  class="animate__animated animate__slideInDown">
 	  &nbsp;Help us to Predict Price Better	
-	</div>
+</div>
 
 <div class="main_input">
 <form action="{{ url_for('car')}}" method="POST">
@@ -81,6 +83,20 @@
 b{
 	color: white;
 }
+.back-button{
+	width: 60px;
+	height: 60px;
+	border-radius: 60%;
+	background: rgba(0,0,0,0.7);
+	color: white;
+	font-size: 30px;
+}
+
+.back-button:hover{
+	background-color:rgba(255,255,255,0.7);
+	color: black;
+	box-shadow: 1px 1px 1px 1px white;
+}
 .button{
 	border: 2px solid white;
 	width: 300px;
@@ -89,11 +105,11 @@ b{
 	font-size: 25px;
 margin-top: 10px;
 }
+
 .button:hover{
-	background-color:rgba(255,255,255,0.1);
+	background-color:rgba(255,255,255,0.7);
 	color: black;
 	box-shadow: 1px 1px 1px 1px white;
-
 }
 #main{
 	background: rgba(0,0,0,0.7);
