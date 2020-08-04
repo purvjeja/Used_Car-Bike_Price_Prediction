@@ -10,18 +10,22 @@ app = Flask(__name__)
 def Home():
     return render_template('index.html')
 
+@app.route('/home',methods=['GET','POST'])
+def Home1():
+    return render_template('index1.html')
 
-@app.route('/CAR', methods=['GET'])
+
+@app.route('/home/CAR', methods=['GET'])
 def CAR():
     return render_template('CAR.html')
 
-@app.route('/BIKE', methods=['GET'])
+@app.route('/home/BIKE', methods=['GET'])
 def BIKE():
     return render_template('BIKE.html')
 
 @app.route('/CAR_Result', methods=['GET','POST'])
 def car():
- if request.method == 'POST':  
+ if request.method == 'POST':
     car_data = pd.read_csv('Data\Cars\CAR_6000.csv')
     Full_Car_Data = pd.read_csv('Data\Cars\CAR_10000.csv')
 
@@ -30,15 +34,15 @@ def car():
     car_data['mileage'] = car_data['mileage'].str.rstrip('kmpl')        # Removing the 'kmpl' from the mileage column
     car_data['mileage'] = car_data['mileage'].str.rstrip('km/kg')       # Removing the 'km/kg' from the mileage column
 
-    
-    car_data.loc[car_data['transmission'] == 'Manual', 'new_transmission'] = 0                      # 0 for Manual      
-    car_data.loc[car_data['transmission'] == 'Automatic', 'new_transmission'] = 1                   # 1 for Automatic   
+
+    car_data.loc[car_data['transmission'] == 'Manual', 'new_transmission'] = 0                      # 0 for Manual
+    car_data.loc[car_data['transmission'] == 'Automatic', 'new_transmission'] = 1                   # 1 for Automatic
 
     car_data.loc[car_data['fuel_Type'] == 'CNG', 'new_fuel'] = 0                                    # 0 for CNG
     car_data.loc[car_data['fuel_Type'] == 'LPG', 'new_fuel'] = 1                                    # 1 for LPG
     car_data.loc[car_data['fuel_Type'] == 'Petrol', 'new_fuel'] = 2                                 # 2 for Petrol
     car_data.loc[car_data['fuel_Type'] == 'Diesel', 'new_fuel'] = 3                                 # 3 for Diesel
-   
+
     car_data.dropna(inplace = True) #empty Data removing
 
     X=car_data.iloc[:,[1,2,8,9]].values
@@ -54,7 +58,7 @@ def car():
 
     def predict_mileage(input_data):
         y_prediction=regressor.predict(input_data)
-        if(y_prediction < 10): y_prediction=y_prediction+13.43 
+        if(y_prediction < 10): y_prediction=y_prediction+13.43
         return  y_prediction
 
 
@@ -62,8 +66,8 @@ def car():
     Full_Car_Data['mileage'] = Full_Car_Data['mileage'].str.rstrip('km/kg')       # Removing the 'km/kg' from the mileage column
 
 
-    Full_Car_Data.loc[Full_Car_Data['transmission'] == 'Manual', 'new_transmission'] = 0                      # 0 for Manual      
-    Full_Car_Data.loc[Full_Car_Data['transmission'] == 'Automatic', 'new_transmission'] = 1                   # 1 for Automatic   
+    Full_Car_Data.loc[Full_Car_Data['transmission'] == 'Manual', 'new_transmission'] = 0                      # 0 for Manual
+    Full_Car_Data.loc[Full_Car_Data['transmission'] == 'Automatic', 'new_transmission'] = 1                   # 1 for Automatic
 
     Full_Car_Data.loc[Full_Car_Data['fuel_Type'] == 'CNG', 'new_fuel'] = 0                                    # 0 for CNG
     Full_Car_Data.loc[Full_Car_Data['fuel_Type'] == 'LPG', 'new_fuel'] = 1                                    # 1 for LPG
@@ -75,23 +79,23 @@ def car():
 
     Full_Car_Data.loc[Full_Car_Data['owner_Type'] == 'Second', 'new_owner'] = 1                               # 1 for Second
     Full_Car_Data.loc[Full_Car_Data['owner_Type'] == 'Second Owner', 'new_owner'] = 1
-    
+
     Full_Car_Data.loc[Full_Car_Data['owner_Type'] == 'Third', 'new_owner'] = 2                                # 2 for Third
     Full_Car_Data.loc[Full_Car_Data['owner_Type'] == 'Third Owner', 'new_owner'] = 2
 
     Full_Car_Data.loc[Full_Car_Data['owner_Type'] == 'Fourth & Above', 'new_owner'] = 3                       # 3 for Fourth
-    Full_Car_Data.loc[Full_Car_Data['owner_Type'] == 'Fourth & Above Owner', 'new_owner'] = 3                  
-    Full_Car_Data.loc[Full_Car_Data['owner_Type'] == 'Test Drive Car', 'new_owner'] = 3  
+    Full_Car_Data.loc[Full_Car_Data['owner_Type'] == 'Fourth & Above Owner', 'new_owner'] = 3
+    Full_Car_Data.loc[Full_Car_Data['owner_Type'] == 'Test Drive Car', 'new_owner'] = 3
 
     Full_Car_Data.dropna(subset=['new_fuel'],inplace=True)
-    
+
     def mileageempty(columns):
         mileage=columns[0]
         year=columns[1]
         km=columns[2]
         transmission=columns[3]
         fuel=columns[4]
-        
+
         if pd.isnull(mileage):
             data_for_mileage = predict_mileage([[year,km,transmission,fuel]])
             return data_for_mileage
@@ -99,7 +103,7 @@ def car():
             return mileage
 
     Full_Car_Data['mileage']=Full_Car_Data[['mileage','year','kilometers_Driven','new_transmission','new_fuel']].apply(mileageempty,axis=1)
-    
+
     X_train1, X_test1, Y_train1, Y_test1=train_test_split(Full_Car_Data[['year','kilometers_Driven','new_fuel','new_transmission','new_owner','mileage']],Full_Car_Data[['selling_price']],test_size=0.2,random_state=3)
     linearRegression = LinearRegression()
     linearRegression.fit(X_train1,Y_train1)
@@ -120,7 +124,7 @@ def car():
     output=round(res,2)
     score=round(score,2)
     score=score*100
-    
+
     if output<1:
             return render_template('result_car_negative.html')
     else:
@@ -150,7 +154,7 @@ def car():
                     return render_template('result_car.html',text="{}".format(output),predicted_score="{}".format(score),car_suggestion="\"{}\" Model Fits Best To Your Inputed Data :)".format(car))
  else:
     return render_template('CAR.html')
-        
+
 
 @app.route('/BIKE_Result', methods=['GET','POST'])
 def bike():
@@ -159,9 +163,9 @@ def bike():
 
     bike_data.loc[bike_data['owner'] == '1st owner', 'new_owner'] = 0                      # 0 for 1st owner
     bike_data.loc[bike_data['owner'] == '2nd owner', 'new_owner'] = 1                      # 1 for 2st owner
-    bike_data.loc[bike_data['owner'] == '3rd owner', 'new_owner'] = 2                      # 3 for 3st owner   
+    bike_data.loc[bike_data['owner'] == '3rd owner', 'new_owner'] = 2                      # 3 for 3st owner
     bike_data.loc[bike_data['owner'] == '4th owner', 'new_owner'] = 3                      # 4 for 4st owner
-       
+
     X_train2, X_test2, Y_train2, Y_test2=train_test_split(bike_data[['year','km_driven','new_owner']],bike_data[['selling_price']],test_size=0.10,random_state=0)
     linearRegre= LinearRegression()
     linearRegre.fit(X_train2,Y_train2)
