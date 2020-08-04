@@ -10,16 +10,15 @@ app = Flask(__name__)
 def Home():
     return render_template('index.html')
 
-@app.route('/home',methods=['GET','POST'])
+@app.route('/Selection',methods=['GET','POST'])
 def Home1():
     return render_template('index1.html')
 
-
-@app.route('/home/CAR', methods=['GET'])
+@app.route('/CAR', methods=['GET'])
 def CAR():
     return render_template('CAR.html')
 
-@app.route('/home/BIKE', methods=['GET'])
+@app.route('/BIKE', methods=['GET'])
 def BIKE():
     return render_template('BIKE.html')
 

@@ -48,7 +48,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href='{{ url_for('Home') }}'>Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#cta">Predict</a></li>
           <li><a href="#team">Team</a></li>
@@ -75,7 +75,7 @@
 
       <div class="row mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
         <div class="col-xl-2 col-md-4 col-6">
-          <div class="icon-box">
+          <div class="icon-box" onclick="location.href='{{ url_for('Home1') }}'">
             <i class="ri-bar-chart-box-line" style="color:orange"></i>
             <h3><a href='{{ url_for('Home1') }}'>PREDICT</a></h3>
           </div>
